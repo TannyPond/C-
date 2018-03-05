@@ -1,42 +1,69 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Triangulo
+namespace Eq2grau
 {
-    public class Program
+    class Eq2Grau
     {
-
-        public static void Main(String[] Args)
+        static void Main(string[] args)
         {
-            //Declaração de Variáveis
-            double ladoTri=0;
-            double perimetroTri, areaTri;
+            double a;
+            double b;
+            double c;
+            double delta;
+            double x1;
+            double x2;
 
-            // Nome do programa
-            Console.WriteLine("Trianguglo Equilatero");
+            Console.WriteLine("Equação de Segundo Grau\n\n");
 
-            //Pedindo as entradas
-            Console.WriteLine();
-			Console.Write("Informe o valor dos lados do triangulo: ");
-			ladoTri = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine();
-			
-			//Cálculo de área
-			areaTri = ladoTri * (Math.Sqrt(3)/2);
-			Console.WriteLine("A área do triangulo (cm²) é = " + areaTri);
-            Console.WriteLine();
-			
-			//Calculo do Perimetro = 3*lado
-			perimetroTri = ladoTri * 3;
-			Console.WriteLine("O perímetro do triangulo é (cm³) = " + perimetroTri);
-            Console.WriteLine();
-			
-			Console.WriteLine("Pressione qualquer tecla para sair!");
-			Console.ReadKey();
+            Console.Write("Entre com um numero diferente de zero para o coeficiente 'a' de uma equacao \nde segundo grau: ");
+            a = Convert.ToDouble(Console.ReadLine());
             Console.Read();
+
+            while (a == 0)
+            {
+                Console.Write("Voce digitou zero, por favor digite um número diferente de zero\n: ");
+                a = Convert.ToDouble(Console.ReadLine());
+                Console.Read();
+            }
+
+            Console.Write("Entre com o valor de b: ");
+            b = Convert.ToDouble(Console.ReadLine());
+            Console.Read();
+
+            Console.Write("Entre com o valor de c: ");
+            c = Convert.ToDouble(Console.ReadLine());
+            Console.Read();
+
+            delta = ((b * b) - (4 * a * c));
+                
+            if (delta < 0)
+            {
+                Console.Write("A equação não possui raízes reais\n ");
+                Console.Read();
+            }
+            else
+            {
+                if (delta == 0)
+                {
+                    Console.Write("Delta igual a Zero possui uma unica raiz. O Delta é:  \n" + delta + "\n\n");
+                    x1 = ((-b + Math.Sqrt(delta)) / (2 * a));
+                    Console.WriteLine("Raiz é igual a:" + x1 + "\n\n");
+                    Console.Read();
+                }
+                else
+                {
+                    Console.WriteLine("Delta maior que Zero possui duas raizes reais. O Delta é: \n" + delta);
+                    x1 = ((-b + Math.Sqrt(delta)) / (2 * a));
+                    Console.WriteLine("Raiz 1 é: \n" + x1);
+                    x2 = ((-b - Math.Sqrt(delta)) / (2 * a));
+                    Console.WriteLine("Raiz 2 é: \n" + x2);
+                    Console.Read();
+                }
+            }
         }
     }
 }
